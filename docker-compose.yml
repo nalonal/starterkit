@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  #############################################
+  #       INSTALLER VISUAL STUDIO CODE        #
+  #############################################
+  code-server:
+    image: lscr.io/linuxserver/code-server:latest
+    container_name: starterkit
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      - PASSWORD=2wsx@WSX1qazZAQ! #optional
+      - DEFAULT_WORKSPACE=/home/starterkit #optional
+      
+    volumes:
+      - .:/home/starterkit
+    ports:
+      - 10001:8443
+    restart: unless-stopped
+    networks:
+      - starternetwork
+
+networks:
+  starternetwork:
